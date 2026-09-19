@@ -239,6 +239,20 @@ footer{
   margin-top: 12px;
   display: inline-block;
 }
+		.view {
+  display: none;
+}
+
+.active {
+  display: block;
+}.a {
+     font-weight: bold;
+        font-size: 12px;
+    color: red;
+    padding: 15px;
+    user-select:none;
+}
+		
 	</style>
 	 <div id="capa">
   <h1>Antibíblia sagrada</h1>
@@ -249,7 +263,20 @@ footer{
   </div>
   <button onclick="abrirLivro()">Ler</button>
 </div>
-
+ <div id="bigbang" class="view active">
+ 
+    <header class="header">
+    <div class="container header-content">
+      
+        <ul>
+      <nav class="nav">
+           <li> <a class="a" href="#" onclick="show('bigbang')">bigbang</a></li>
+          <br>
+          <li><a class="a" href="#" onclick="show('pag2')">resto</a></li>
+      </nav>
+    </div>
+    </ul>
+	</header>
 <div id="livro">
 	<div class="prog-wrap"><div id="prog" class="prog"></div></div>    <header class="hero" id="top">  
     <div class="title">  
@@ -313,8 +340,8 @@ footer{
   <p>bigbang</p>  
 </section>  
 
-  
-<div style="height:24px"></div>  
+   
+<div style="height:24px"></div>  </div> <div id="pag2">
 <h1 style="margin:10px 0 14px">Livro: Êxodo Cósmico</h1>  
 
 <section id="exo-cap-1" class="chapter">  
@@ -1060,7 +1087,7 @@ padding-top: 10px;
 	  <h2>posfácio</h2>
 	  <p>deveremos sempre ter a lógica e a razão, eu escolho a liberdade de pensar e sempre escolherei.</p>
   </section>
-
+</div>
 <style>  
   .horror-theme {  
     background: linear-gradient(180deg, #0d0000, #000000) !important;  
@@ -1143,6 +1170,31 @@ padding-top: 10px;
 
   window.addEventListener("scroll", updateProg);  
   updateProg();  
+	const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  window.scrollY > 400 ? topBtn.classList.add("show") : topBtn.classList.remove("show")
+});
+topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+// Animação de reveal ao scrollar a tela
+const reveals = document.querySelectorAll(".reveal");
+function revealOnScroll() {
+  const h = window.innerHeight;
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < h - 80) {
+      el.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+  function show(page) {
+    document.querySelectorAll('.view').forEach(el => {
+        el.classList.remove('active');
+    });
+
+    document.getElementById(page).classList.add('active');
+  }
 </script>
 
 </main>
