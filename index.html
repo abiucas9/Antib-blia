@@ -1189,11 +1189,23 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
   function show(page) {
-    document.querySelectorAll('.view').forEach(el => {
+    const views = document.querySelectorAll('.view');
+    const target = document.getElementById(page);
+
+    console.log("Página:", page);
+    console.log("Views:", views);
+    console.log("Target:", target);
+
+    if (!target) {
+        console.error("Página não encontrada:", page);
+        return;
+    }
+
+    views.forEach(el => {
         el.classList.remove('active');
     });
 
-    document.getElementById(page).classList.add('active');
+    target.classList.add('active');
   }
 </script>
 
