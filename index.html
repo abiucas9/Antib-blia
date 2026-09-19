@@ -1192,14 +1192,7 @@ window.addEventListener("load", revealOnScroll);
     const views = document.querySelectorAll('.view');
     const target = document.getElementById(page);
 
-    console.log("Página:", page);
-    console.log("Views:", views);
-    console.log("Target:", target);
-
-    if (!target) {
-        console.error("Página não encontrada:", page);
-        return;
-    }
+    alert("Página: " + page + "\nTarget: " + target);
 
     views.forEach(el => {
         el.classList.remove('active');
